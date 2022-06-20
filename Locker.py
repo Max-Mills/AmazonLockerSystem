@@ -21,7 +21,7 @@ class Locker:
 		return self.__lockerSize
 	
 	def getLockerStatus(self) -> LockerStatus:
-		return self.__lockerStatus
+		return self.__lockerStatus.value
 
 	def getLockerCode(self):
 		return self.__code
