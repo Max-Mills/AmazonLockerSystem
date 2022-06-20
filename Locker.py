@@ -2,31 +2,33 @@ from LockerStatus import LockerStatus
 
 class Locker:
 
-	def setLockerID(self, id):
+	def __init__(self, id: str, size: str, status: LockerStatus, code: str):
 		self.__id = id
-
-	def setLockerSize(self, size):
-		self.__lockerSize = size
-
-	def setLockerStatus(self, status):
-		self.__lockerStatus = status
-
-	def setLockerCode(self, code):
+		self.__size = size
+		self.__status = status
 		self.__code = code
 
-	def getLockerID(self):
+	##Locker ID and Size will never change##
+
+	def changeLockerStatus(self, status: LockerStatus):
+		self.__status = status
+
+	def changeLockerCode(self, code: str):
+		self.__code = code
+
+	def getLockerID(self) -> str:
 		return self.__id
 	
-	def getLockerSize(self):
-		return self.__lockerSize
+	def getLockerSize(self) -> str:
+		return self.__size
 	
 	def getLockerStatus(self) -> LockerStatus:
-		return self.__lockerStatus.value
+		return self.__status.value
 
 	def getLockerCode(self):
 		return self.__code
 	
-	def isCodeValid(self, code):
+	def isCodeValid(self, code: str):
 		if self.__code == code:
 			print("match")
 		else:

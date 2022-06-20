@@ -1,25 +1,33 @@
+from tokenize import Double
+
+
 class Item:
 
-	def setItemId(self, id):
+	def __init__(self, id: str, name: str, price: int, size: str):
 		self.__id = id
-
-	def setItemName(self, name):
 		self.__name = name
-
-	def setItemPrice(self, price):
-		self.__price == price
-
-	def setItemSize(self, size):
+		self.__price = price
 		self.__size = size
 
-	def getItemId(self):
+	##Item ID should never change###
+
+	def setItemName(self, name: str):
+		self.__name = name
+
+	def setItemPrice(self, price: int):
+		self.__price == price
+
+	def setItemSize(self, size: str):
+		self.__size = size
+
+	def getItemId(self) -> str:
 		return self.__id
 
-	def getItemName(self):
+	def getItemName(self) -> str:
 		return self.__name
 
-	def getItemPrice(self):
+	def getItemPrice(self) -> int:
 		return self.__price
-		
-	def getItemSize(self):
+
+	def getItemSize(self) -> str:
 		return self.__size
