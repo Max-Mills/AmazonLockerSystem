@@ -1,11 +1,11 @@
 class Customer:
     
     # Init method that will construct objects (also known as the construtor method)
-    def __init__(self, name, geoLocation, orders, money):
-        self.customerID = None      #instance variable
+    def __init__(self, id, name, geoLocation, money):
+        self.customerID = id      #instance variable
         self.__name = name
         self.__geoLocation = geoLocation 
-        self.__orders = None
+        self.__orders = {}
         self.__money = money
 
     def setName(self, name):
@@ -14,6 +14,16 @@ class Customer:
     def setGeoLocation(self, geoLocation):
         self.__geoLocation = geoLocation
     
+
+    def getGeoLocation(self):
+        return self.__geoLocation
+	
+    #def addOrders(self, newOrder):
+        #self.__orders.append(newOrder) 
+    
+    #def getAllOrders(self):
+        #return self.__orders
+
     def setOrders(self, newOrder):
         self.__orders.append(newOrder) 
         
