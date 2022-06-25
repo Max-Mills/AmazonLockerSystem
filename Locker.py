@@ -1,8 +1,9 @@
 from LockerStatus import LockerStatus
+from Sizes import Sizes
 
 class Locker:
 
-	def __init__(self, id: str, size: str, status: LockerStatus, code: str):
+	def __init__(self, id: str, size: Sizes, status: LockerStatus, code: str):
 		self.__id = id
 		self.__size = size
 		self.__status = status
@@ -19,7 +20,7 @@ class Locker:
 	def getLockerID(self) -> str:
 		return self.__id
 	
-	def getLockerSize(self) -> str:
+	def getLockerSize(self) -> Sizes:
 		return self.__size
 	
 	def getLockerStatus(self) -> LockerStatus:
