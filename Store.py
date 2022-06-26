@@ -8,8 +8,8 @@ class Store:
 		self.__location = location
 		self.__lockers = lockers
 
-	def isOpen(self, day = datetime.today().strftime('%A')) -> bool:
-		today = datetime.today()
+	def isOpen(self, today: datetime = datetime.today()) -> bool:
+		day = today.strftime('%A')
 		date = str(today.date())
 		hour = today.hour
 		times = self.__location.getLocationTiming().getOpenTimes()
@@ -21,18 +21,31 @@ class Store:
 				return True
 		return False
 
-	def changeLocation(self, location: AmazonLocation):		self.__location = location
+	def changeLocation(self, location: AmazonLocation):		
+		self.__location = location
 	
 	def addLocker(self, locker: Locker):
 		self.__lockers.append(locker)
 
-	def removeLocker(self, id: str):
+	def findLocker(self, id: str) -> int:
 		i = 0
 		for locker in self.__lockers:
 			if locker.getLockerID() == id:
-				self.__lockers.remove(locker)
-				return
-			i += i
+				return i
+			i += 1
+		print("Locker not found")
+		return None
+
+##doesn't seem needed
+	#def updateLocker(self, locker: Locker):
+		#index: int = self.findLocker(locker.getLockerID())
+		#if index != None:
+		#	self.__lockers[index] = locker			
+
+	def removeLocker(self, id: str):
+		index: int = self.findLocker(id)
+		if index != None:
+			del self.__lockers[index]
 
 	def getLockers(self) -> list:
 		return self.__lockers
@@ -40,11 +53,9 @@ class Store:
 	def getLocation(self) -> AmazonLocation:
 		return self.__location
 
-	def findOpenLocker(self, size: str):
+	def findOpenLocker(self, size: str) -> Locker:
 		for locker in self.__lockers:
 			if locker.getLockerStatus() == 0 and locker.getLockerSize() == size:
-				print("Locker " + locker.getLockerID() + " is available for the item")
-				break
-
+				return locker
 
 
